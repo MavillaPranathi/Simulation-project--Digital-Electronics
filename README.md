@@ -4,26 +4,57 @@ Design and simulate 2 bit synchronous upcounter with T flip flop using Verilog.
 
 # THEORY
 
-1. The module sp declaration defines the module name (sp) along with its input and output ports. In this case, it has an input port clk representing the clock signal and an output port a representing the 2-bit parallel output
- 
-2. The always @(posedge clk) block indicates that the following statements will execute only on the positive edge of the clock signal (clk). This ensures that the circuit operates in a synchronous manner.
+A 2-bit synchronous up-counter is a sequential circuit that counts sequentially from 00 to 11 and then wraps around back to 00. It has two output bits, representing the counter value. The counting operation is synchronized with a clock signal, meaning the counter increments its value only on a specific clock edge (e.g., rising edge or falling edge).
 
-3. Inside the always block, two assignments are performed.
+To implement a 2-bit synchronous up-counter using T flip-flops, you can follow these steps:
 
-       a[1] = (a[0]) ^ a[1]; updates the value of the second bit (a[1]) in the output register a. It uses the XOR (^) operation between the current value of the            first bit (a[0]) and the current value of the second bit (a[1]). This XOR operation introduces feedback into the circuit.
+Step 1: Declare the input and output ports:
+clk: The clock signal used to synchronize the counting operation.
+reset: A reset signal that initializes the counter to 00.
+count[1:0]: The 2-bit output representing the counter value.
 
-       a[0] = 1 ^ a[0]; updates the value of the first bit (a[0]) in the output register a. It performs an XOR operation between the constant value 1 and the            current value of the first bit (a[0]). This effectively alternates the value of the first bit between 0 and 1 on each clock cycle.
-       
-4. The combination of these two assignments creates a shift register with feedback behavior. The feedback connection is established by XORing the first bit (a[0]) with the second bit (a[1]). This feedback ensures that the second bit reflects the value of the previous first bit on each clock cycle. The first bit alternates between 0 and 1.
+Step 2: Internal signals and flip-flops:
+Declare a 2-bit register to store the counter value, typically denoted as q.
+Declare a single-bit input for the T flip-flop, usually denoted as t.
 
-5. By observing the output a over multiple clock cycles, you will see the input bit being serially shifted into the shift register and the feedback XOR operation modifying the values in the shift register.
+Step 3: Instantiate T flip-flops and connect them:
+Instantiate two T flip-flops, one for each bit of the counter (q[1] and q[0]).
+Connect the clock signal (clk) and reset signal (reset) to each T flip-flop.
+Connect the output of the first flip-flop (q[0]) to the input of the second flip-flop (q[1]).
+
+Step 4: Define the T input based on the counter value:
+Use a combinational logic circuit (e.g., an if-else statement) to determine the T input for the T flip-flops.
+When the counter is at the value 01, set the T input to 1. This will toggle the next flip-flop and increment the counter.
+For all other counter values, set the T input to 0, so the counter remains unchanged.
+
+Step 5: Assign the counter value to the output:
+Assign the value of the 2-bit counter register (q) to the output ports (count[1:0]).
+By following these steps, you can implement a 2-bit synchronous up-counter using T flip-flops. The counter will increment its value on each clock edge, following the defined logic for the T input. The reset signal can be used to initialize the counter to 00, ensuring predictable behavior when the circuit starts.
+
 # LOGIC DIAGRAM
+
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fprogrammerbay.com%2Fdesign-a-2-bit-synchronous-up-counter-using-t-flip-flop%2F&psig=AOvVaw2CE9XkVV_vNpO9p6QPeEer&ust=1685533177190000&source=images&cd=vfe&ved=0CA4QjRxqFwoTCIDA3sj6nP8CFQAAAAAdAAAAABAE
 
 # NETLIST DIAGRAM
 
+![Screenshot (136)](https://github.com/MavillaPranathi/Simulation-project--Digital-Electronics/assets/118343610/d66d33e7-ac4f-443e-9c95-4609b090fc2d)
 
 # TIMING DIAGRAM
 
-# PROGRAM
+![Screenshot (135)](https://github.com/MavillaPranathi/Simulation-project--Digital-Electronics/assets/118343610/6f45edce-5660-49ee-8657-f294c4327546)
 
-# REFERENCE
+# PROGRAM
+DEVELOPED BY: M.PRANATHI
+REFRENCE NUMBER: 212222240064
+
+module sp (clk,a);
+input clk;
+output  reg [1:0]a;
+always@(posedge clk)
+begin
+   a[1]=(a[0])^a[1];
+	a[0]=1^a[0];
+end
+endmodule
+# RESULT 
+This project is successfully completed.
