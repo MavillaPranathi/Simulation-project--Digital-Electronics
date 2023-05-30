@@ -33,7 +33,7 @@ By following these steps, you can implement a 2-bit synchronous up-counter using
 
 # LOGIC DIAGRAM
 
-https://www.google.com/url?sa=i&url=https%3A%2F%2Fprogrammerbay.com%2Fdesign-a-2-bit-synchronous-up-counter-using-t-flip-flop%2F&psig=AOvVaw2CE9XkVV_vNpO9p6QPeEer&ust=1685533177190000&source=images&cd=vfe&ved=0CA4QjRxqFwoTCIDA3sj6nP8CFQAAAAAdAAAAABAE
+![image](https://github.com/MavillaPranathi/Simulation-project--Digital-Electronics/assets/118343610/16f09707-c92c-4bbb-8d9e-dc6f1a52c920)
 
 # NETLIST DIAGRAM
 
@@ -41,9 +41,10 @@ https://www.google.com/url?sa=i&url=https%3A%2F%2Fprogrammerbay.com%2Fdesign-a-2
 
 # TIMING DIAGRAM
 
-![Screenshot (135)](https://github.com/MavillaPranathi/Simulation-project--Digital-Electronics/assets/118343610/6f45edce-5660-49ee-8657-f294c4327546)
+![Screenshot (134)](https://github.com/MavillaPranathi/Simulation-project--Digital-Electronics/assets/118343610/f34bc393-e75b-4b75-8dc4-4fdd7eaf6290)
 
 # PROGRAM
+```
 DEVELOPED BY: M.PRANATHI
 REFRENCE NUMBER: 212222240064
 
@@ -56,5 +57,6 @@ begin
 	a[0]=1^a[0];
 end
 endmodule
+```
 # RESULT 
 This project is successfully completed.
